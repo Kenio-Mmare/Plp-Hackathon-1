@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seghete Kenio Mmare - Portfolio</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #ff7f50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+        }
+        
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ff7f50;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .profile-img {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .profile-img img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ff7f50;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .skill-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 150px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-card i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ff7f50;
+        }
+        
+        /* Education Section */
+        .education-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: #ff7f50;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .download-btn:hover {
+            background-color: #e67347;
+        }
+        
+        /* Interests Section */
+        .interests-list {
+            list-style: none;
+        }
+        
+        .interests-list li {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-links a {
+            display: inline-block;
+            margin-right: 10px;
+            color: #ff7f50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        .submit-btn {
+            background-color: #ff7f50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e67347;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Seghete Kenio Mmare</h1>
+            <p>IT Professional & Tech Enthusiast</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#interests">Interests</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hi! I'm Seghete Kenio Mmare, a motivated and detail-oriented IT graduate with a Bachelor of Science in Information Technology and recent certification in AI Career Essentials and basic skills in ArcGIS.</p>
+                    <p>I'm seeking an internship or entry-level role in IT support, networking, or systems administration to apply my academic knowledge and hands-on experience in a professional environment.</p>
+                    <p>When I'm not working with technology, I enjoy staying updated with the latest tech trends and exploring new developments in AI and cybersecurity.</p>
+                </div>
+                <div class="profile-img">
+                    <img src="Pictures/my pic.jpg" alt="Seghete Kenio Mmare">
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <i>HTML</i>
+                    <h3>HTML</h3>
+                    <p>Web Development</p>
+                </div>
+                <div class="skill-card">
+                    <i>CSS</i>
+                    <h3>CSS</h3>
+                    <p>Web Development</p>
+                </div>
+                <div class="skill-card">
+                    <i>Py</i>
+                    <h3>Python</h3>
+                    <p>Programming</p>
+                </div>
+                <div class="skill-card">
+                    <i>SQL</i>
+                    <h3>MySQL</h3>
+                    <p>Database</p>
+                </div>
+                <div class="skill-card">
+                    <i>Win</i>
+                    <h3>Windows</h3>
+                    <p>OS Administration</p>
+                </div>
+                <div class="skill-card">
+                    <i>Net</i>
+                    <h3>Networking</h3>
+                    <p>TCP/IP, LAN/WAN</p>
+                </div>
+                <div class="skill-card">
+                    <i>AI</i>
+                    <h3>AI Essentials</h3>
+                    <p>Certified</p>
+                </div>
+                <div class="skill-card">
+                    <i>GIS</i>
+                    <h3>ArcGIS</h3>
+                    <p>Basic Skills</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education">
+            <h2>Educational Background</h2>
+            <div class="education-item">
+                <h3>Bachelor of Science in Information Technology</h3>
+                <p>Taita Taveta University</p>
+            </div>
+            <div class="education-item">
+                <h3>Diploma in Information Technology</h3>
+                <p>Taita Taveta University</p>
+            </div>
+            <div class="education-item">
+                <h3>Certificate in Information Technology</h3>
+                <p>Taita Taveta University</p>
+            </div>
+            <div class="education-item">
+                <h3>International Computer Driving License (ICDL)</h3>
+                <p>Thika Institute of Business Studies</p>
+            </div>
+            <a href="Seghete_Kenio_Mmare_CV_Updated.docx" class="download-btn">Download My CV</a>
+        </section>
+        
+        <section id="interests">
+            <h2>My Professional Interests</h2>
+            <ul class="interests-list">
+                <li>
+                    <h3>IT Support & Networking</h3>
+                    <p>Implementing and troubleshooting network infrastructures and providing technical support.</p>
+                </li>
+                <li>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Exploring applications of AI and machine learning in solving real-world problems.</p>
+                </li>
+                <li>
+                    <h3>Cybersecurity</h3>
+                    <p>Developing secure systems and understanding threat mitigation strategies.</p>
+                </li>
+                <li>
+                    <h3>Geographic Information Systems</h3>
+                    <p>Applying GIS technology to spatial data analysis and visualization.</p>
+                </li>
+            </ul>
+        </section>
+        
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('https://via.placeholder.com/400x200');"></div>
+                    <div class="project-info">
+                        <h3>E-commerce Web Application</h3>
+                        <p>Developed user authentication, product management, and shopping cart system using MySQL for data storage.</p>
+                        <div class="project-links">
+                            <a href="#">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('https://via.placeholder.com/400x200');"></div>
+                    <div class="project-info">
+                        <h3>Small Business Network Configuration</h3>
+                        <p>Designed and implemented local network infrastructure with routers, switches, and firewalls.</p>
+                        <div class="project-links">
+                            <a href="#">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img" style="background-image: url('Pictures/face.jpeg');"></div>
+                    <div class="project-info">
+                        <h3>Facial Recognition System</h3>
+                        <p>Developed a secure real-time facial recognition system with LBPH-based recognition and Fernet encryption.</p>
+                        <div class="project-links">
+                            <a href="#">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out for collaborations or job opportunities!</p>
+            <div class="contact-info" style="text-align: center; margin-bottom: 20px;">
+                <p><strong>Email:</strong> seghetekenio@gmail.com</p>
+                <p><strong>Phone:</strong> 0713643157</p>
+                <p><strong>Location:</strong> Taveta, Kenya</p>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Seghete Kenio Mmare. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
