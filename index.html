@@ -104,63 +104,62 @@
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            justify-content: center;
+            justify-content: space-between;
         }
         
-        .skill-card {
+        .skill-category {
             background: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 150px;
-            text-align: center;
-            transition: transform 0.3s;
+            flex: 1;
+            min-width: 250px;
         }
         
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .skill-card i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #ff7f50;
-        }
-        
-        /* Education Section */
-        .education-item {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .download-btn {
+        .skill-item {
             display: inline-block;
-            background-color: #ff7f50;
+            background: #ff7f50;
             color: white;
-            padding: 10px 20px;
-            margin-top: 20px;
-            border-radius: 5px;
-            text-decoration: none;
+            padding: 5px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        /* Education/Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline:before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #ff7f50;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 60px;
+            text-align: right;
+            color: #ff7f50;
             font-weight: bold;
-            transition: background-color 0.3s;
         }
         
-        .download-btn:hover {
-            background-color: #e67347;
-        }
-        
-        /* Interests Section */
-        .interests-list {
-            list-style: none;
-        }
-        
-        .interests-list li {
+        .timeline-content {
             background: white;
-            padding: 15px;
-            margin-bottom: 10px;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -177,11 +176,12 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
         }
         
         .project-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 127, 80, 0.2);
         }
         
         .project-img {
@@ -203,51 +203,41 @@
             font-weight: bold;
         }
         
-        /* Contact Section */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
+        /* Testimonials */
+        blockquote {
+            background: white;
+            padding: 20px;
+            border-left: 4px solid #ff7f50;
+            margin: 20px 0;
+        }
+        
+        cite {
+            display: block;
+            margin-top: 10px;
+            font-style: normal;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        /* Contact Section - Simplified */
+        .contact-info {
             background: white;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
         }
         
-        .form-group {
-            margin-bottom: 20px;
+        .contact-item {
+            margin: 15px 0;
         }
         
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
+        .contact-item a {
+            color: #ff7f50;
+            text-decoration: none;
             font-weight: bold;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        
-        .form-group textarea {
-            height: 150px;
-        }
-        
-        .submit-btn {
-            background-color: #ff7f50;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background-color: #e67347;
         }
         
         /* Footer */
@@ -277,6 +267,10 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .skills-container {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -292,9 +286,9 @@
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#interests">Interests</a></li>
+            <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -306,7 +300,6 @@
                 <div class="about-text">
                     <p>Hi! I'm Seghete Kenio Mmare, a motivated and detail-oriented IT graduate with a Bachelor of Science in Information Technology and recent certification in AI Career Essentials and basic skills in ArcGIS.</p>
                     <p>I'm seeking an internship or entry-level role in IT support, networking, or systems administration to apply my academic knowledge and hands-on experience in a professional environment.</p>
-                    <p>When I'm not working with technology, I enjoy staying updated with the latest tech trends and exploring new developments in AI and cybersecurity.</p>
                 </div>
                 <div class="profile-img">
                     <img src="Pictures/my pic.jpg" alt="Seghete Kenio Mmare">
@@ -317,90 +310,56 @@
         <section id="skills">
             <h2>Technical Skills</h2>
             <div class="skills-container">
-                <div class="skill-card">
-                    <i>HTML</i>
-                    <h3>HTML</h3>
-                    <p>Web Development</p>
+                <div class="skill-category">
+                    <h3>Core Technologies</h3>
+                    <div class="skill-item">HTML</div>
+                    <div class="skill-item">CSS</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">MySQL</div>
                 </div>
-                <div class="skill-card">
-                    <i>CSS</i>
-                    <h3>CSS</h3>
-                    <p>Web Development</p>
-                </div>
-                <div class="skill-card">
-                    <i>Py</i>
-                    <h3>Python</h3>
-                    <p>Programming</p>
-                </div>
-                <div class="skill-card">
-                    <i>SQL</i>
-                    <h3>MySQL</h3>
-                    <p>Database</p>
-                </div>
-                <div class="skill-card">
-                    <i>Win</i>
-                    <h3>Windows</h3>
-                    <p>OS Administration</p>
-                </div>
-                <div class="skill-card">
-                    <i>Net</i>
+                <div class="skill-category">
                     <h3>Networking</h3>
-                    <p>TCP/IP, LAN/WAN</p>
+                    <div class="skill-item">TCP/IP</div>
+                    <div class="skill-item">LAN/WAN</div>
+                    <div class="skill-item">DNS</div>
+                    <div class="skill-item">DHCP</div>
                 </div>
-                <div class="skill-card">
-                    <i>AI</i>
-                    <h3>AI Essentials</h3>
-                    <p>Certified</p>
-                </div>
-                <div class="skill-card">
-                    <i>GIS</i>
-                    <h3>ArcGIS</h3>
-                    <p>Basic Skills</p>
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <div class="skill-item">Windows</div>
+                    <div class="skill-item">Git</div>
+                    <div class="skill-item">ArcGIS</div>
+                    <div class="skill-item">ERP Systems</div>
                 </div>
             </div>
         </section>
         
-        <section id="education">
-            <h2>Educational Background</h2>
-            <div class="education-item">
-                <h3>Bachelor of Science in Information Technology</h3>
-                <p>Taita Taveta University</p>
-            </div>
-            <div class="education-item">
-                <h3>Diploma in Information Technology</h3>
-                <p>Taita Taveta University</p>
-            </div>
-            <div class="education-item">
-                <h3>Certificate in Information Technology</h3>
-                <p>Taita Taveta University</p>
-            </div>
-            <div class="education-item">
-                <h3>International Computer Driving License (ICDL)</h3>
-                <p>Thika Institute of Business Studies</p>
+        <section id="experience">
+            <h2>Education & Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h3>Kenya Ports Authority</h3>
+                        <p>IT Attaché - Provided technical support, network configuration, and user training</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022</div>
+                    <div class="timeline-content">
+                        <h3>Bachelor of Science in IT</h3>
+                        <p>Taita Taveta University - Graduated with honors</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h3>AI Career Essentials</h3>
+                        <p>ALX Africa Certification</p>
+                    </div>
+                </div>
             </div>
             <a href="Seghete_Kenio_Mmare_CV_Updated.docx" class="download-btn">Download My CV</a>
-        </section>
-        
-        <section id="interests">
-            <h2>My Professional Interests</h2>
-            <ul class="interests-list">
-                <li>
-                    <h3>IT Support & Networking</h3>
-                    <p>Implementing and troubleshooting network infrastructures and providing technical support.</p>
-                </li>
-                <li>
-                    <h3>Artificial Intelligence</h3>
-                    <p>Exploring applications of AI and machine learning in solving real-world problems.</p>
-                </li>
-                <li>
-                    <h3>Cybersecurity</h3>
-                    <p>Developing secure systems and understanding threat mitigation strategies.</p>
-                </li>
-                <li>
-                    <h3>Geographic Information Systems</h3>
-                    <p>Applying GIS technology to spatial data analysis and visualization.</p>
-                </li>
-            </ul>
         </section>
         
         <section id="projects">
@@ -412,56 +371,44 @@
                         <h3>E-commerce Web Application</h3>
                         <p>Developed user authentication, product management, and shopping cart system using MySQL for data storage.</p>
                         <div class="project-links">
-                            <a href="#">GitHub</a>
+                            <a href="#ecommerce-details">View Details</a>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-img" style="background-image: url('https://via.placeholder.com/400x200');"></div>
                     <div class="project-info">
-                        <h3>Small Business Network Configuration</h3>
-                        <p>Designed and implemented local network infrastructure with routers, switches, and firewalls.</p>
-                        <div class="project-links">
-                            <a href="#">Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img" style="background-image: url('Pictures/face.jpeg');"></div>
-                    <div class="project-info">
                         <h3>Facial Recognition System</h3>
-                        <p>Developed a secure real-time facial recognition system with LBPH-based recognition and Fernet encryption.</p>
+                        <p>Developed a secure real-time facial recognition system with LBPH-based recognition and encryption.</p>
                         <div class="project-links">
-                            <a href="#">GitHub</a>
+                            <a href="#facial-recognition-details">View Details</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         
+        <section id="testimonials">
+            <h2>Testimonials</h2>
+            <blockquote>
+                <p>"Kenio demonstrated excellent problem-solving skills during our project collaboration. His attention to detail and technical aptitude were impressive."</p>
+                <cite>Grace Mwaura, Chairperson School of Informatics and Computing</cite>
+            </blockquote>
+        </section>
+        
         <section id="contact">
             <h2>Contact Me</h2>
-            <p>Feel free to reach out for collaborations or job opportunities!</p>
-            <div class="contact-info" style="text-align: center; margin-bottom: 20px;">
-                <p><strong>Email:</strong> seghetekenio@gmail.com</p>
-                <p><strong>Phone:</strong> 0713643157</p>
-                <p><strong>Location:</strong> Taveta, Kenya</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Email:</strong> <a href="mailto:seghetekenio@gmail.com">seghetekenio@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Phone:</strong> <a href="tel:+254713643157">0713643157</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Location:</strong> Taveta, Kenya
+                </div>
             </div>
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
         </section>
     </main>
     
