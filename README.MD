@@ -44,5 +44,5 @@ A clean, responsive personal portfolio website built with **pure HTML and CSS** 
 **Location:** Taveta, Kenya  
 
 ---
-*Created for [Hackathon Name] submission*  
+*Created for PLP WEB DEVELOPMENT HACKATHON submission*  
 *© 2025 Kenio Mmare - All rights reserved*
